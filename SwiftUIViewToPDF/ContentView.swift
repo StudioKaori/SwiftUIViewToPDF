@@ -15,14 +15,16 @@ struct ContentView: View {
   
   func render() -> URL {
     // 1: Render Hello World with some modifiers
-    let renderer = ImageRenderer(content:
-                                  Text("Hello, world!")
-      .font(.largeTitle)
-      .foregroundColor(.white)
-      .padding()
-      .background(.blue)
-      .clipShape(Capsule())
-    )
+//    let renderer = ImageRenderer(content:
+//                                  Text("Hello, world!")
+//      .font(.largeTitle)
+//      .foregroundColor(.white)
+//      .padding()
+//      .background(.blue)
+//      .clipShape(Capsule())
+//    )
+    
+    let renderer = ImageRenderer(content: MyPrintableContent())
     
     // 2: Save it to our documents directory
     let url = URL.documentsDirectory.appending(path: "output.pdf")
@@ -56,5 +58,20 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+  }
+}
+
+struct MyPrintableContent: View {
+  var body: some View {
+    VStack {
+      RoundedRectangle(cornerRadius: 20)
+      Text("Hej hej!")
+      Text("Hello, world!")
+        .font(.largeTitle)
+        .foregroundColor(.white)
+        .padding()
+        .background(.blue)
+        .clipShape(Capsule())
+    }
   }
 }
